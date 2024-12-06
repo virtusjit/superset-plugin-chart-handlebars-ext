@@ -1,0 +1,60 @@
+{
+  "name": "superset-plugin-chart-handlebars-ext",
+  "version": "0.1.0",
+  "description": "Handlebars extended plugin",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "private": false,
+  "scripts": {
+    "build": "npm run build-cjs && npm run build-esm && npm run ts-types",
+    "build-cjs": "babel src --extensions \".ts,.tsx,.js,.jsx\" --copy-files --out-dir lib",
+    "build-clean": "npm run clean && npm run build",
+    "build-esm": "BABEL_OUTPUT=esm babel src --extensions \".ts,.tsx,.js,.jsx\" --copy-files --out-dir esm",
+    "dev": "BABEL_OUTPUT=esm babel src --extensions \".ts,.tsx,.js,.jsx\" --watch --copy-files --out-dir esm",
+    "prebuild": "rimraf {lib,esm,tsconfig.tsbuildinfo}",
+    "ts-types": "tsc --build",
+    "test": "jest"
+  },
+  "author": "My Name",
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "just-handlebars-helpers": "^1.0.19",
+    "fs-extra": "^11.1.1",
+    "path-browserify": "^1.0.1"
+  },
+  "peerDependencies": {
+    "@airbnb/config-babel": "^2.0.1",
+    "@superset-ui/chart-controls": "*",
+    "@superset-ui/core": "0.20.2",
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@types/jest": "^26.0.4",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.1.2",
+    "@types/express": "^4.17.13",
+    "@types/fs-extra": "^11.0.1",
+    "@types/handlebars": "^4.1.0",
+    "@types/node": "^16.11.7"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "keywords": [
+    "superset"
+  ],
+  "types": "./lib/index.d.ts"
+}
